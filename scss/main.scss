@@ -1,0 +1,176 @@
+$myBlue: #1a8fe3;
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+input {
+  width: 400px;
+  height: 40px;
+}
+
+.formDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+  height: 80vh;
+}
+
+.labelDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+
+  input:focus {
+    outline: none;
+    border: 1px solid;
+    border-color: $myBlue;
+  }
+
+  &:focus-within {
+    color: $myBlue;
+    font-weight: bold;
+  }
+}
+
+.countrySelect {
+  height: 40px;
+  font-size: 16px;
+
+  &:invalid {
+    color: grey !important;
+  }
+
+  option {
+    color: black;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $myBlue;
+    background-color: transparent;
+  }
+}
+
+.ButtonDiv {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  Button {
+    height: 40px;
+    width: 150px;
+    border-radius: 20px;
+    border: none;
+    background: #1a8fe3;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+      background: rgba($myBlue, 0.8);
+    }
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 14px;
+
+    a {
+      text-decoration: none;
+      color: $myBlue;
+      padding-left: 2px;
+    }
+  }
+
+  span {
+    font-size: 24px;
+    color: $myBlue;
+    margin-top: 10px;
+  }
+}
+
+.errorMessage {
+  color: red;
+  padding-top: 4px;
+  font-size: 12px;
+  font-weight: normal !important;
+}
+
+.invalidInput {
+  border-color: red !important;
+}
+
+.passwordLabelDiv {
+  display: flex;
+
+}
+
+.toolTipp {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  font-weight: bold;
+  border: 1px solid;
+  color: white;
+  width: 20px;
+  background-color: $myBlue;
+  border-radius: 50%;
+  margin-left: 5px;
+  margin-bottom: 2px;
+  
+  &::before, &::after{
+    --scale: 0;
+    --arrow-size: 10px;
+    
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+    transition: 150ms transform;
+    transform-origin: bottom center;
+  }
+
+  &::before {
+    --translate-y: calc(-100% - var(--arrow-size));
+    --scale: 0;
+    background-color: $myBlue;
+    content: attr(data-tooltip);
+    height: 25px;
+    width: 25px;
+    padding: 0.5rem;
+    padding-bottom: 15px;
+    width: max-content;
+    max-width: 300px;
+    border-radius: .3rem;
+    text-align: center;
+    font-weight: normal;
+  }
+
+  &:hover {
+    &::after,&::before{
+      --scale:1 ;
+    }
+  }
+
+  &:after {
+    --translate-y: calc(-1 * var(--arrow-size));
+    content: '';
+    border: var(--arrow-size) solid transparent;
+    border-top-color: $myBlue;
+    transform-origin: top center;
+    
+  }
+
+}
